@@ -20,3 +20,6 @@ async def update_item(item: dict):
 @app.delete("/")
 async def delete_item(item: dict):
     return {"message": "Item deleted", "item": item}
+
+
+    
