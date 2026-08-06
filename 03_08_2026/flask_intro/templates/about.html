@@ -1,11 +1,598 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magizh Technologies</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#222;
+    overflow-x:hidden;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+section{
+    padding:90px 0;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    background:rgba(15,23,42,.95);
+    backdrop-filter:blur(10px);
+    z-index:999;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    height:75px;
+}
+
+.logo{
+    color:white;
+    font-size:28px;
+    font-weight:700;
+}
+
+.logo span{
+    color:#38bdf8;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+#menu{
+    display:none;
+    color:white;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    padding-top:140px;
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f172a,#1d4ed8);
+    display:flex;
+    align-items:center;
+    color:white;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.hero h1{
+    font-size:60px;
+    line-height:1.2;
+    margin-bottom:25px;
+}
+
+.hero p{
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 32px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.primary{
+    background:#38bdf8;
+    color:white;
+}
+
+.primary:hover{
+    transform:translateY(-3px);
+}
+
+.secondary{
+    border:2px solid white;
+    color:white;
+    margin-left:15px;
+}
+
+.card{
+    background:white;
+    color:#222;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.card h2{
+    margin-bottom:20px;
+}
+
+.card li{
+    margin:18px 0;
+}
+
+/* ================= ABOUT ================= */
+
+.title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.title h2{
+    font-size:42px;
+    color:#1d4ed8;
+}
+
+.title p{
+    margin-top:10px;
+    color:#666;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.box{
+    background:white;
+    padding:35px;
+    border-radius:15px;
+    text-align:center;
+    transition:.4s;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.box:hover{
+    transform:translateY(-10px);
+}
+
+.box h3{
+    margin:20px 0;
+}
+
+/* ================= COURSES ================= */
+
+.courses{
+    background:#eef5ff;
+}
+
+.course-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.course{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    transition:.4s;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.course:hover{
+    transform:scale(1.05);
+}
+
+.course h3{
+    margin:20px 0;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    background:#111827;
+    color:white;
+}
+
+.stat-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    text-align:center;
+    gap:20px;
+}
+
+.stat h2{
+    font-size:50px;
+    color:#38bdf8;
+}
+
+/* ================= CTA ================= */
+
+.cta{
+    text-align:center;
+    background:linear-gradient(135deg,#2563eb,#38bdf8);
+    color:white;
+}
+
+.cta h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.cta p{
+    margin-bottom:30px;
+    font-size:18px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#0f172a;
+    color:white;
+    padding:50px 20px;
+    text-align:center;
+}
+
+/* ================= SCROLL ANIMATION ================= */
+
+.hidden{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s;
+}
+
+.show{
+    opacity:1;
+    transform:none;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+.hero-grid,
+.about-grid,
+.course-grid,
+.stat-grid{
+    grid-template-columns:1fr;
+}
+
+.hero{
+    text-align:center;
+}
+
+.hero h1{
+    font-size:42px;
+}
+
+nav ul{
+    position:absolute;
+    top:75px;
+    left:0;
+    width:100%;
+    display:none;
+    flex-direction:column;
+    background:#0f172a;
+    padding:25px;
+}
+
+nav ul.active{
+    display:flex;
+}
+
+#menu{
+    display:block;
+}
+
+.secondary{
+    display:block;
+    margin:20px auto;
+    width:max-content;
+}
+
+}
+
+</style>
+
 </head>
+
 <body>
-    <h1>about page</h1>
+
+<nav>
+
+<div class="container navbar">
+
+<div class="logo">
+Magizh<span>Technologies</span>
+</div>
+
+<ul id="navlinks">
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#courses">Courses</a></li>
+<li><a href="#stats">Placements</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<div id="menu">☰</div>
+
+</div>
+
+</nav>
+
+<section class="hero hidden" id="home">
+
+<div class="container hero-grid">
+
+<div>
+
+<h1>
+Learn.<br>
+Build.<br>
+Get Placed.
+</h1>
+
+<p>
+
+Magizh Technologies is an EdTech and Software Development company helping students become industry-ready through Python Full Stack Development, Artificial Intelligence, Real-world Projects, Internships, and Career Guidance.
+
+</p>
+
+<a href="#" class="btn primary">Explore Courses</a>
+
+<a href="#" class="btn secondary">Contact Us</a>
+
+</div>
+
+<div>
+
+<div class="card">
+
+<h2>🚀 Why Choose Us?</h2>
+
+<ul>
+
+<li>✔ Placement Focused Training</li>
+<li>✔ Live Industry Projects</li>
+<li>✔ AI & Full Stack Development</li>
+<li>✔ Internship Opportunities</li>
+<li>✔ Resume Building</li>
+<li>✔ Mock Interviews</li>
+<li>✔ Career Guidance</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about" class="hidden">
+
+<div class="container">
+
+<div class="title">
+
+<h2>About Magizh Technologies</h2>
+
+<p>Empowering students with industry-ready skills.</p>
+
+</div>
+
+<div class="about-grid">
+
+<div class="box">
+
+<h3>🎓 Learn</h3>
+
+<p>Comprehensive training programs designed by experienced professionals.</p>
+
+</div>
+
+<div class="box">
+
+<h3>💻 Build</h3>
+
+<p>Create portfolio-worthy real-world projects using modern technologies.</p>
+
+</div>
+
+<div class="box">
+
+<h3>🚀 Get Hired</h3>
+
+<p>Interview preparation, resume reviews, and placement support.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="courses hidden" id="courses">
+
+<div class="container">
+
+<div class="title">
+
+<h2>Popular Programs</h2>
+
+</div>
+
+<div class="course-grid">
+
+<div class="course">
+
+<h3>Python Full Stack</h3>
+
+<p>Frontend, Backend, PostgreSQL, Deployment</p>
+
+</div>
+
+<div class="course">
+
+<h3>Artificial Intelligence</h3>
+
+<p>Machine Learning, Deep Learning & LLMs</p>
+
+</div>
+
+<div class="course">
+
+<h3>Internship Program</h3>
+
+<p>Work on live industry projects with mentors.</p>
+
+</div>
+
+<div class="course">
+
+<h3>Interview Preparation</h3>
+
+<p>DSA, Aptitude, HR & Technical Interviews.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="stats hidden" id="stats">
+
+<div class="container">
+
+<div class="stat-grid">
+
+<div class="stat">
+<h2>1000+</h2>
+<p>Students Trained</p>
+</div>
+
+<div class="stat">
+<h2>100+</h2>
+<p>Projects</p>
+</div>
+
+<div class="stat">
+<h2>50+</h2>
+<p>Workshops</p>
+</div>
+
+<div class="stat">
+<h2>95%</h2>
+<p>Success Rate</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="cta hidden">
+
+<div class="container">
+
+<h2>Start Your Tech Career Today</h2>
+
+<p>
+
+Become an Industry Ready Software Engineer with our Placement-Oriented Programs.
+
+</p>
+
+<a href="#" class="btn primary">Enroll Now</a>
+
+</div>
+
+</section>
+
+<footer id="contact">
+
+<h2>Magizh Technologies</h2>
+
+<p>Empowering Future Developers</p>
+
+<br>
+
+<p>Email : info@magizhtechnologies.com</p>
+
+<p>Website : www.magizhtechnologies.com</p>
+
+<br>
+
+<p>© 2026 Magizh Technologies. All Rights Reserved.</p>
+
+</footer>
+
+<script>
+
+const menu=document.getElementById("menu");
+const nav=document.getElementById("navlinks");
+
+menu.onclick=()=>{
+    nav.classList.toggle("active");
+}
+
+const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+},{
+    threshold:.2
+});
+
+document.querySelectorAll(".hidden").forEach(el=>{
+    observer.observe(el);
+});
+
+</script>
+
 </body>
 </html>
